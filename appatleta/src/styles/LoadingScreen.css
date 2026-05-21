@@ -1,0 +1,45 @@
+.loading-background {
+    background: linear-gradient(145deg, #000000, #101820);
+    background-size: 400% 400%;
+    animation: bgShift 10s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loading-box {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    color: #00ffe7;
+  }
+  
+  .loading-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: spin 2s linear infinite;
+    color: #00ffe7;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
+  }
+  
+  .loading-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  

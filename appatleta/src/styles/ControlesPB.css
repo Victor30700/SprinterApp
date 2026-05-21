@@ -1,0 +1,297 @@
+/* src/pages/ControlesPB.css */
+
+/* Reset y box‑sizing global para este archivo */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal: diseño móvil, temática deportiva */
+.controles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #203a43);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden; /* vertical overflow visible para el calendario */
+}
+
+/* Asegura que el calendario de DatePicker se muestre siempre encima */
+.react-datepicker-popper,
+.react-datepicker {
+  z-index: 3000 !important;
+}
+
+/* =========================================
+   HEADER FIJO (BOTÓN VOLVER FULL)
+   ========================================= */
+.controles-header-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+}
+
+.back-button-full {
+  background: transparent;
+  border: none;
+  color: #00ffe7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-button-full:hover {
+  color: #fff;
+  transform: translateX(-2px);
+}
+
+.back-button-full svg {
+  font-size: 1.2rem;
+}
+
+/* Título Principal */
+.controles-title {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-shadow: 0 0 10px rgba(0, 255, 231, 0.5);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   BUSCADOR (CORREGIDO: Lupa y Texto)
+   ========================================= */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 30px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ffe7;
+  font-size: 1.2rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.search-box input {
+  width: 100%;
+  /* Padding-left para que el texto empiece DESPUÉS de la lupa */
+  padding: 14px 14px 14px 45px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #00ffe7;
+  box-shadow: 0 0 0 3px rgba(0, 255, 231, 0.15);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+/* Formulario de controles: fondo transparente con blur */
+.controles-form {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Inputs y selects del formulario */
+.controles-form select,
+.controles-form input[type="number"],
+.controles-form .datepicker-input,
+.controles-form .textarea-sensaciones {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+.controles-form select:focus,
+.controles-form input:focus,
+.controles-form .datepicker-input:focus,
+.controles-form .textarea-sensaciones:focus {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Opciones del select con texto negro y fondo blanco */
+.controles-form select option {
+  color: #000;
+  background: #fff;
+}
+
+/* Botón guardar: estilo deportivo con animación pulso */
+.btn {
+  align-self: center;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #00ff9d, #007aff);
+  border: none;
+  border-radius: 24px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,255,157,0.4);
+  animation: pulse 2.5s infinite;
+  transition: transform 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Efecto pulso suave */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,255,157,0.4); }
+  50%      { box-shadow: 0 6px 20px rgba(0,255,157,0.6); }
+}
+
+/* Lista de registros */
+.controles-list {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Tarjeta por distancia */
+.controles-distance {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(4px);
+}
+
+/* Encabezado de cada distancia */
+.controles-distance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.controles-distance-header h3 {
+  font-size: 1.2rem;
+  color: #00ff9d;
+}
+.controles-distance-header span {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Ítems de registro */
+.controles-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Contenido del registro */
+.registro-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.registro-content div {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Texto de sensaciones */
+.sensaciones-text {
+  margin-top: 6px;
+  font-style: italic;
+  color: #ddd;
+}
+
+/* Acciones: iconos con efecto bounce en hover */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.actions button {
+  background: transparent;
+  border: none;
+  color: #00ff9d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s;
+}
+.actions button:hover {
+  color: #fff;
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Mensaje vacío */
+.controles-empty {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* Adaptaciones móviles adicionales */
+@media (max-width: 360px) {
+  .controles-title {
+    font-size: 1.6rem;
+  }
+  .controles-form {
+    padding: 12px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+  .controles-distance {
+    padding: 8px;
+  }
+}

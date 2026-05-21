@@ -1,0 +1,145 @@
+/* Fondo general */
+.registro-lesion-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(10, 10, 10, 0.9)),
+              url('../assets/atleta1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Botón volver */
+.btn-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 123, 255, 0.8);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.btn-back:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Título */
+.registro-lesion-container h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(0, 255, 255, 0.7);
+  animation: fadeInDown 0.8s ease;
+}
+
+/* Formulario */
+.form-lesion {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: fadeIn 1s ease;
+}
+
+/* Inputs y Selects */
+.form-lesion input,
+.form-lesion textarea,
+.form-lesion select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  color: white;
+  font-size: 1rem;
+  backdrop-filter: blur(5px);
+  outline: none;
+}
+
+.form-lesion textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Etiquetas */
+.form-lesion label {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #b2bec3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Botón de guardar */
+.form-lesion button {
+  background: #0066ff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+.form-lesion button:hover {
+  background: #0050cc;
+  transform: scale(1.03);
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .form-lesion {
+    padding: 1rem;
+  }
+
+  .registro-lesion-container h3 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .btn-back {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 1rem;
+  }
+}

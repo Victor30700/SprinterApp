@@ -1,0 +1,850 @@
+/* src/styles/RegistroForm.css */
+
+:root {
+  --primary-color: #00ffe7;
+  --secondary-color: #007aff;
+  --bg-dark: #0f172a;
+  --glass-bg: rgba(30, 41, 59, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --danger-color: #ef4444;
+  --success-color: #10b981;
+  --text-muted: #94a3b8;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+.registro-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), 
+                    url('../assets/pista3.jpg'); 
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #fff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  padding-bottom: 80px; 
+}
+
+/* =========================================
+   HEADER STICKY (FLOTANTE SUPERIOR)
+   ========================================= */
+.registro-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.header-title-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.registro-header-sticky h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-autosave {
+  font-size: 0.75rem;
+  color: var(--success-color);
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Botones del Header */
+.btn-icon-nav, .btn-save-mini {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Circulares */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-icon-nav:hover, .btn-save-mini:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
+}
+
+.btn-save-mini {
+  background: var(--secondary-color); /* Destacar guardar */
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
+}
+
+/* =========================================
+   CUERPO DEL FORMULARIO
+   ========================================= */
+.form-body-content {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Grupos de Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Estilos Generales de Inputs */
+input[type="date"],
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 255, 231, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* --- NUEVO BOTÓN VISIBLE PARA OBTENER CLIMA --- */
+.btn-detect-full {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    background: rgba(0, 255, 231, 0.15); /* Fondo suave cyan */
+    color: var(--primary-color);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.btn-detect-full:hover {
+    background: var(--primary-color);
+    color: #0f172a; /* Texto oscuro al hover */
+    box-shadow: 0 0 15px rgba(0, 255, 231, 0.4);
+}
+
+.btn-detect-full.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.spin-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- CORRECCIÓN SELECTOR CALZADO --- */
+.select-calzado-highlight {
+    background-color: #1e293b; /* Fondo oscuro sólido */
+    color: #fff;
+    font-weight: 600;
+}
+.select-calzado-highlight option {
+    background-color: #1e293b;
+    color: #fff;
+}
+
+
+/* NUEVO: Fila de Contexto (Viento, Temp) */
+.context-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.context-row .form-group.small { flex: 1; min-width: 80px; }
+.context-row .form-group.medium { flex: 2; min-width: 120px; }
+
+
+/* Área de Plan Grande */
+.textarea-plan {
+  min-height: 120px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.textarea-small {
+  min-height: 80px;
+}
+
+/* =========================================
+   SECCIONES (TARJETAS)
+   ========================================= */
+.section-container {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Sección destacada para ejecución */
+.highlight-section {
+  background: rgba(0, 122, 255, 0.15); /* Tinte azulado */
+  border-color: rgba(0, 122, 255, 0.3);
+}
+
+.section-container h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color);
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* =========================================
+   FILA DE SERIES (PLANIFICACIÓN)
+   ========================================= */
+.series-card-row {
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-end; 
+  gap: 0.8rem;
+  flex-wrap: wrap; 
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.series-input-group {
+  flex: 2; 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.series-input-group.small {
+  flex: 1;
+  min-width: 60px;
+}
+
+.series-input-group label, .series-result label {
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+.badge-pb {
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.series-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+}
+
+.sugerido-display strong {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px rgba(0,255,231,0.5);
+}
+
+/* Botón eliminar serie (basurero) */
+.btn-delete-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.btn-delete-icon:hover { color: var(--danger-color); }
+
+
+/* =========================================
+   BLOQUE REPETICIONES (EJECUCIÓN)
+   ========================================= */
+.bloque-reps-card {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.bloque-reps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.smart-select-wrapper {
+  flex-grow: 1;
+}
+
+.select-distancia-reps {
+  font-weight: bold;
+  background: rgba(255,255,255,0.1);
+  border-color: transparent;
+}
+
+.btn-delete-bloque-mini {
+  font-size: 0.75rem;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* GRID DE TIEMPOS (REPS) */
+.reps-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); 
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.rep-input-item {
+  position: relative;
+}
+
+.rep-idx {
+  position: absolute;
+  top: -8px;
+  left: 4px;
+  font-size: 0.7rem;
+  background: var(--bg-dark);
+  padding: 0 4px;
+  color: var(--text-muted);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.rep-input-item input {
+  font-size: 1.2rem; 
+  padding: 0.8rem 0.4rem;
+  text-align: center;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+}
+
+/* Botón X pequeña para borrar repetición */
+.btn-x-rep {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  z-index: 11;
+}
+
+/* Botón GRANDE (+) para añadir serie */
+.btn-add-rep-big {
+  height: 100%; 
+  min-height: 54px;
+  background: rgba(255,255,255,0.1);
+  border: 2px dashed rgba(255,255,255,0.3);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add-rep-big:hover {
+  background: rgba(0, 255, 231, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Footer del bloque (Promedio) */
+.bloque-promedio-footer {
+  margin-top: 1rem;
+  text-align: right;
+  font-size: 1rem;
+  color: #ccc;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 0.5rem;
+}
+
+.bloque-promedio-footer strong {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+/* =========================================
+   BOTÓN NUEVO: GENERAR GRÁFICAS
+   ========================================= */
+.btn-generate-charts {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--primary-color);
+  background: rgba(0, 255, 231, 0.1);
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 231, 0.1);
+}
+
+.btn-generate-charts:hover {
+  background: var(--primary-color);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 231, 0.4);
+}
+
+/* =========================================
+   NUEVA SECCIÓN: GRÁFICAS DE RENDIMIENTO
+   ========================================= */
+.charts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.chart-card {
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.chart-title {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+}
+
+.chart-badge {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: var(--text-muted);
+}
+
+.chart-stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 0.8rem;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.stat-item small {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.stat-item.best strong { color: #ffd700; font-size: 1.2rem; }
+.stat-item.volume strong { color: #3b82f6; font-size: 1.1rem; }
+.stat-item.fatigue strong { font-size: 1.1rem; }
+
+.chart-insight-footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    text-align: center;
+}
+
+.chart-footer-hint {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Tooltip Customizado */
+.custom-tooltip-chart {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--glass-border);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.tooltip-label { color: #94a3b8; font-size: 0.8rem; margin: 0; }
+.tooltip-time { color: #fff; font-weight: bold; font-size: 1rem; margin: 4px 0; }
+.tooltip-best { color: #00ffe7; font-weight: bold; font-size: 0.8rem; margin: 0; text-shadow: 0 0 5px rgba(0,255,231,0.5); }
+.tooltip-worst { color: #ef4444; font-size: 0.8rem; margin: 0; }
+
+
+/* =========================================
+   ESTADÍSTICAS & ÁNIMO
+   ========================================= */
+.mood-selector-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  overflow-x: auto; 
+  padding-bottom: 0.5rem;
+}
+
+.mood-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 0.8rem 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 60px;
+}
+
+.mood-item.selected {
+  background: rgba(0, 122, 255, 0.2);
+  border-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.mood-icon { font-size: 1.8rem; margin-bottom: 4px; }
+.mood-text { font-size: 0.7rem; text-align: center; line-height: 1.1; }
+
+.stats-row-inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group.half { flex: 1; }
+
+.sleep-hint {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  margin-top: 2px;
+}
+
+/* =========================================
+   ESTADO FÍSICO (GIGANTE Y SOLO)
+   ========================================= */
+.fisico-large-container {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.fisico-large-container label {
+  font-size: 1.1rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.fisico-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.fisico-number {
+  font-size: 5rem; /* GIGANTE */
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.fisico-scale {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Colores Dinámicos del Número (Rojo -> Verde) */
+.val-1, .val-2, .val-3 { color: #ef4444; } /* Rojo/Malo */
+.val-4, .val-5, .val-6 { color: #f59e0b; } /* Amarillo/Normal */
+.val-7, .val-8 { color: #3b82f6; } /* Azul/Bueno */
+.val-9, .val-10 { color: #10b981; } /* Verde/Óptimo */
+
+
+/* Slider (Range) Personalizado (para Estado Físico) */
+.fisico-slider-large {
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.1);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.fisico-slider-large::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  margin-top: -10px;
+}
+
+.fisico-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* =========================================
+   BOTONES GENERALES
+   ========================================= */
+
+/* Estilo específico para "Agregar Serie" */
+.btn-add-outline {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  margin-top: 0.5rem; 
+}
+
+/* Estilo específico para "Crear Bloque de Tiempos" */
+.btn-add-main {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  
+  background: rgba(0, 122, 255, 0.2);
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  margin-top: 1rem; 
+}
+
+
+.footer-actions {
+  margin-top: 2rem;
+}
+
+.btn-save-full {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--secondary-color), #00c6ff);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+  transition: transform 0.2s;
+}
+
+.btn-save-full:active {
+  transform: scale(0.98);
+}
+.btn-save-full:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Slider (Range) Personalizado - General (Se mantiene) */
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  margin-top: -10px;
+  box-shadow: 0 0 10px rgba(0,255,231,0.6);
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
+
+/* =========================================
+   FIX: ESTILOS DEL MODAL (ConfirmModal)
+   ========================================= */
+/* Forzamos estilos oscuros para que coincida con el tema y se lea el texto */
+.modal-content {
+  background-color: #1e293b !important; /* Fondo oscuro */
+  border: 1px solid var(--primary-color) !important; /* Borde neón */
+  color: #fff !important; /* Texto blanco */
+  box-shadow: 0 0 25px rgba(0, 255, 231, 0.2) !important;
+}
+
+.modal-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Botones del modal */
+.modal-footer .btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+/* Botón Cancelar (Gris) */
+.modal-footer .btn.cancel {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1; /* Texto gris claro visible */
+}
+.modal-footer .btn.cancel:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Botón Confirmar (Verde/Primary) */
+.modal-footer .btn.confirm {
+    background: linear-gradient(135deg, var(--success-color), #059669);
+    color: #fff; /* Texto blanco visible */
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+.modal-footer .btn.confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}

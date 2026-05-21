@@ -1,0 +1,376 @@
+/* src/styles/Home.css - Versión Definitiva 2025 */
+
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+:root {
+  --primary-color: #00ffe7;   /* Cian eléctrico */
+  --secondary-color: #007aff; /* Azul deportivo */
+  --accent-gold: #ffd700;     /* Dorado para premios/rayo */
+  --bg-overlay: rgba(15, 23, 42, 0.85); /* Capa oscura para legibilidad */
+  
+  /* Sistema Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  
+  --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  /* Fallback color por si la imagen tarda en cargar */
+  background-color: #0f172a; 
+  color: #fff;
+  position: relative;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Padding fluido: más espacio en PC, menos en móvil */
+  padding: clamp(1rem, 5vw, 3rem) clamp(1rem, 3vw, 2rem);
+  
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Capa oscura (Overlay) sobre la imagen de fondo */
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Asegurar que el contenido flote sobre el overlay */
+.home-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   HEADER Y TÍTULO
+   ========================================= */
+.home-header {
+  margin-top: 1rem;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  /* Animación de entrada suave desde arriba */
+  animation: slideInTop 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.home-title {
+  /* Tamaño de fuente fluido: nunca demasiado grande ni demasiado pequeño */
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: var(--text-shadow);
+  letter-spacing: clamp(1px, 1vw, 4px);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Icono del Rayo */
+.rayo-icon {
+  display: inline-block;
+  width: clamp(35px, 9vw, 60px);
+  height: clamp(35px, 9vw, 60px);
+  /* Animación continua de energía */
+  animation: electricPulse 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 8px var(--accent-gold));
+}
+
+.rayo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Botón Logout (Opcional si se usa en NavBar) */
+.logout-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* =========================================
+   GRID DEL MENÚ (LAYOUT)
+   ========================================= */
+.menu-grid {
+  display: grid;
+  /* Por defecto 2 columnas (Móviles estándar) */
+  grid-template-columns: repeat(2, 1fr); 
+  
+  /* Espaciado fluido */
+  gap: clamp(1rem, 2vw, 2rem); 
+  
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para pantallas grandes */
+  perspective: 1000px;
+}
+
+/* =========================================
+   TARJETAS (CARDS)
+   ========================================= */
+.menu-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  
+  /* Padding dinámico */
+  padding: clamp(1.2rem, 3vw, 2.5rem) 1rem;
+  
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow);
+  
+  /* Efecto Vidrio */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Animación de entrada "Elástica" */
+  animation: elasticPop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+  
+  min-height: 140px;
+  position: relative;
+  overflow: hidden; /* Para contener efectos de brillo */
+}
+
+/* Retrasos escalonados para que aparezcan una por una */
+.menu-card:nth-child(1) { animation-delay: 0.05s; }
+.menu-card:nth-child(2) { animation-delay: 0.1s; }
+.menu-card:nth-child(3) { animation-delay: 0.15s; }
+.menu-card:nth-child(4) { animation-delay: 0.2s; }
+.menu-card:nth-child(5) { animation-delay: 0.25s; }
+.menu-card:nth-child(6) { animation-delay: 0.3s; }
+.menu-card:nth-child(7) { animation-delay: 0.35s; }
+.menu-card:nth-child(8) { animation-delay: 0.4s; }
+.menu-card:nth-child(9) { animation-delay: 0.45s; }
+
+/* Efecto Hover (Interacción) */
+.menu-card:hover {
+  background: var(--glass-highlight);
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px -5px rgba(0, 255, 231, 0.25);
+}
+
+.menu-card:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Iconos dentro de las tarjetas */
+.menu-icon {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.menu-card:hover .menu-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: var(--primary-color);
+}
+
+/* Texto de las tarjetas */
+.menu-card span {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   TARJETAS ESPECIALES
+   ========================================= */
+
+/* Calendario */
+.calendar-card .menu-icon { 
+  color: var(--accent-gold); 
+}
+
+/* Coach Nova (IA) */
+.ia-card {
+  background: rgba(0, 20, 40, 0.5);
+  border: 1px solid rgba(0, 255, 231, 0.3);
+}
+
+.ia-card span { 
+  color: var(--primary-color); 
+  font-weight: 800;
+}
+
+.ia-icon { 
+  color: var(--primary-color); 
+}
+
+.disabled { 
+  pointer-events: none; 
+  opacity: 0.6; 
+  filter: grayscale(1); 
+}
+
+/* =========================================
+   TARJETA DESTACADA: ANÁLISIS DE VIDEO
+   ========================================= */
+.video-analysis-card {
+  /* ¡MAGIA! Ocupa todas las columnas disponibles */
+  grid-column: 1 / -1; 
+  
+  background: linear-gradient(135deg, rgba(0, 4, 40, 0.85), rgba(0, 78, 146, 0.85));
+  border: 1px solid rgba(0, 255, 231, 0.5);
+  
+  /* Layout horizontal para destacar */
+  display: flex;
+  flex-direction: row; 
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.video-analysis-card .video-icon-animated {
+  font-size: 3rem;
+  margin-bottom: 0; /* Sin margen abajo porque está al lado */
+  color: var(--primary-color);
+  /* Animación de "Grabando" */
+  animation: recordPulse 2s infinite ease-in-out;
+}
+
+.video-analysis-card span {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.video-analysis-card:hover {
+  box-shadow: 0 0 35px rgba(0, 255, 231, 0.35);
+  background: linear-gradient(135deg, rgba(0, 4, 40, 0.95), rgba(0, 78, 146, 0.95));
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.home-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.home-footer .brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.home-footer .legal {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   ANIMACIONES (KEYFRAMES)
+   ========================================= */
+
+/* 1. Entrada Elástica (Pop-In) */
+@keyframes elasticPop {
+  0% { opacity: 0; transform: scale(0.8) translateY(50px); }
+  60% { opacity: 1; transform: scale(1.05) translateY(-10px); }
+  80% { transform: scale(0.95) translateY(5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 2. Entrada Suave para el Header */
+@keyframes slideInTop {
+  0% { opacity: 0; transform: translateY(-50px) scale(0.9); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* 3. Rayo "Sobrecargado" */
+@keyframes electricPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--accent-gold)); opacity: 0.9; }
+  10% { transform: scale(1.15) rotate(3deg); filter: drop-shadow(0 0 15px #ffff00); opacity: 1; }
+  20% { transform: scale(1.1) rotate(-3deg); }
+  35% { transform: scale(1); filter: drop-shadow(0 0 4px var(--accent-gold)); }
+  100% { transform: scale(1); }
+}
+
+/* 4. Icono Video (Efecto Latido / REC) */
+@keyframes recordPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 255, 231, 0)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(0, 255, 231, 0.8)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 255, 231, 0)); }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+
+/* --- TABLET Y ESCRITORIO PEQUEÑO (> 640px) --- */
+@media (min-width: 640px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
+  }
+}
+
+/* --- ESCRITORIO GRANDE (> 1024px) --- */
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 Columnas */
+    gap: 2.5rem;
+  }
+}
+
+/* --- MÓVILES MUY PEQUEÑOS (< 380px) --- */
+@media (max-width: 380px) {
+  .home-title {
+    font-size: 2rem; /* Asegurar que quepa */
+  }
+  
+  .menu-grid {
+    grid-template-columns: 1fr; /* 1 Columna para evitar aplastamiento */
+    gap: 1rem;
+  }
+  
+  /* En pantallas mini, la tarjeta de video vuelve a vertical para ahorrar ancho */
+  .video-analysis-card {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.2rem;
+  }
+  
+  .video-analysis-card .video-icon-animated {
+    margin-bottom: 0.5rem;
+  }
+}

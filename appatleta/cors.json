@@ -1,0 +1,31 @@
+
+[
+  {
+    "origin": [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "http://127.0.0.1:5173",
+      "https://app-atleta-vite.vercel.app"
+    ],
+    "method": ["GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS", "PATCH"],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Length",
+      "Content-Range",
+      "Content-Encoding",
+      "Date",
+      "ETag",
+      "Expires",
+      "Last-Modified",
+      "Server",
+      "Transfer-Encoding",
+      "x-goog-resumable",
+      "Authorization",
+      "Cache-Control",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Allow-Headers"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]

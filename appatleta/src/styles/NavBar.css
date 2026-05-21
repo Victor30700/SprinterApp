@@ -1,0 +1,167 @@
+/* ===== NAVBAR PRO STYLE ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== LOGO ===== */
+.navbar-logo {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.navbar-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ===== TÍTULO ===== */
+.navbar-center {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #00ffe7;
+  text-shadow: 0 0 8px rgba(0,255,255,0.5);
+}
+
+/* ===== SECCIONES ===== */
+.navbar-section {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* ===== USUARIO ===== */
+.navbar-user {
+  cursor: pointer;
+  font-weight: 500;
+  color: #ffffff;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.navbar-user:hover {
+  color: #00ffe7;
+  text-shadow: 0 0 5px rgba(0,255,255,0.7);
+}
+
+/* ===== BOTÓN LOGOUT ===== */
+.navbar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #ff5252;
+  padding: 0.3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: none;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-logout:hover {
+  background: rgba(255, 82, 82, 0.15);
+  color: #ff5252;
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 82, 82, 0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 400px) {
+  .navbar {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .navbar-section {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .navbar-user {
+    font-size: 0.75rem;
+    max-width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navbar-logout {
+    min-width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .navbar-center {
+    font-size: 1.1rem;
+  }
+
+  .navbar-logo {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* TRANSITIONS */
+.navbar,
+.navbar-center,
+.navbar-logo {
+  transition: all 0.3s ease;
+}
+.navbar-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* NAVBAR SCROLLED STATE */
+.navbar-scrolled {
+  padding: 0.2rem 0.5rem;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled .navbar-center {
+  font-size: 1rem;
+}
+
+.navbar-scrolled .navbar-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar-scrolled .navbar-user {
+  font-size: 0.8rem;
+}

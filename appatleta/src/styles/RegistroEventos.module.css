@@ -1,0 +1,219 @@
+/* ======== CONTENEDOR GLOBAL ======== */
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,0.85)),
+              url('../assets/pista3.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #00ffe7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0,255,255,0.7);
+}
+
+.btnBack {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  background: rgba(0,255,255,0.15);
+  color: #00ffe7;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.btnBack:hover {
+  background: rgba(0,255,255,0.35);
+}
+
+.form {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input,
+.textarea,
+select {
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  color: #00ffe7;
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.btnAdd {
+  background: #005eff;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btnAdd:hover {
+  background: #003d99;
+}
+
+/* ======= CALENDARIO PERSONALIZADO COMPLETO ======= */
+:global(.react-calendar) {
+  background: rgba(20, 20, 20, 0.95) !important;
+  border: 1px solid rgba(0,255,255,0.15) !important;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 0 15px rgba(0,255,200,0.2);
+}
+
+/* Cabecera Mes/Año + flechas */
+:global(.react-calendar__navigation) {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+:global(.react-calendar__navigation button) {
+  background: rgba(0,128,255,0.2) !important;
+  color: #00ffe7 !important;
+  border: 1px solid rgba(0,255,255,0.2) !important;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.2s ease;
+}
+
+:global(.react-calendar__navigation button:hover) {
+  background: rgba(0,128,255,0.4) !important;
+}
+
+:global(.react-calendar__navigation button:disabled) {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+/* Días de la semana */
+:global(.react-calendar__month-view__weekdays) {
+  color: #00ffe7 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+/* Días normales */
+:global(.react-calendar__tile) {
+  color: #00ffe7 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(0,255,255,0.1) !important;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+:global(.react-calendar__tile:hover) {
+  background: rgba(0,128,255,0.2) !important;
+}
+
+/* Día actual */
+:global(.react-calendar__tile--now) {
+  background: rgba(0,255,200,0.3) !important;
+  border: 2px solid #00ffc8 !important;
+  color: #00ffc8 !important;
+}
+
+/* Día seleccionado */
+:global(.react-calendar__tile--active) {
+  background: linear-gradient(135deg, #4b00ff, #8e2de2) !important;
+  color: white !important;
+  box-shadow: 0 0 12px rgba(155,0,255,0.6) !important;
+}
+
+/* Fines de semana */
+:global(.react-calendar__month-view__days__day--weekend) {
+  color: #ff6b81 !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  :global(.react-calendar) {
+    padding: 0.5rem !important;
+  }
+
+  :global(.react-calendar__tile) {
+    padding: 0.5rem 0.2rem !important;
+    font-size: 0.8rem;
+  }
+
+  :global(.react-calendar__navigation button) {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ======== NUEVO ESTILO PARA HORA ======== */
+.timeInputWrapper {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(0,255,255,0.15), rgba(0,128,255,0.2));
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,255,0.3);
+  box-shadow: 0 0 12px rgba(0,255,255,0.3);
+  transition: all 0.3s ease;
+}
+
+.timeInputWrapper:hover {
+  box-shadow: 0 0 18px rgba(0,255,255,0.6), 0 0 10px rgba(0,128,255,0.4);
+}
+
+.timeIcon {
+  font-size: 1.5rem;
+  margin-right: 0.6rem;
+  color: #00ffc8;
+  text-shadow: 0 0 5px #00ffe7;
+}
+
+.inputTime {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.7);
+  color: #00ffe7;
+  backdrop-filter: blur(6px);
+  font-size: 1rem;
+  outline: none;
+  box-shadow: inset 0 0 6px rgba(0,255,255,0.3);
+  transition: all 0.3s ease;
+}
+
+.inputTime:hover,
+.inputTime:focus {
+  box-shadow: inset 0 0 10px rgba(0,255,255,0.6);
+}

@@ -1,0 +1,391 @@
+/* src/styles/RegistroGymList.module.css */
+
+/* --- LAYOUT GENERAL --- */
+.listaWrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),
+              url('../assets/gym2.jpg'); /* Asegúrate de que esta imagen exista */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.listaContainer {
+  width: 100%;
+  max-width: 800px; /* Ancho máximo para que no se estire demasiado en PC */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- HEADER SUPERIOR --- */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #00ffe7;
+  text-shadow: 0 0 10px rgba(0, 255, 231, 0.4);
+  margin: 0;
+}
+
+.btnIcon {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btnIcon:hover {
+  background: rgba(0, 255, 231, 0.2);
+  border-color: #00ffe7;
+  color: #00ffe7;
+}
+
+/* --- SECCIÓN DE CONTROLES (SWITCH & FILTRO) --- */
+.controlsSection {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Switch Mensual/Diario */
+.modeSwitch {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.switchBtn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.switchBtn.active {
+  background: #007aff; /* Azul deportivo */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+/* Fila de Filtros */
+.filterRow {
+  display: flex;
+  gap: 10px;
+}
+
+.dateInputWrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s;
+}
+
+.dateInputWrapper:focus-within {
+  border-color: #00ffe7;
+}
+
+.inputIcon {
+  margin-left: 12px;
+  color: #00ffe7;
+}
+
+.dateInput {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  width: 100%;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Quitar el icono de calendario por defecto en Chrome para poner el nuestro si quisiéramos, 
+   pero aquí lo dejamos para funcionalidad nativa, el inputIcon es decorativo */
+.dateInput::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.btnPdf {
+  background: #ef4444; /* Rojo PDF */
+  color: white;
+  border: none;
+  width: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btnPdf:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* --- BOTÓN DE ACCIÓN PRINCIPAL --- */
+.btnNewFull {
+  width: 100%;
+  background: linear-gradient(135deg, #00ffe7, #007aff);
+  border: none;
+  padding: 1rem;
+  border-radius: 14px;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 255, 231, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btnNewFull:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 231, 0.5);
+}
+
+/* --- GRID DE TARJETAS --- */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* En Tablet/PC usamos 2 columnas */
+@media (min-width: 600px) {
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  margin-top: 2rem;
+  grid-column: 1 / -1;
+}
+
+/* --- TARJETA INDIVIDUAL (CARD) --- */
+.card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 255, 231, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Header de la tarjeta */
+.cardHeader {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.cardDate {
+  font-weight: 800;
+  color: #00ffe7;
+  font-size: 1.1rem;
+}
+
+.cardZone {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Badges */
+.badgePrimary {
+  background: rgba(0, 255, 231, 0.15);
+  color: #00ffe7;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.badgeSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* Cuerpo de la tarjeta */
+.cardBody {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+.infoIcon {
+  color: #007aff;
+}
+
+.calculosGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tagCalc {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.planDescription {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  background: rgba(255,255,255,0.03);
+  padding: 8px;
+  border-radius: 8px;
+  border-left: 2px solid #007aff;
+}
+
+.ejerciciosList ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+}
+
+.ejerciciosList li {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.repsBadge {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Footer con acciones */
+.cardFooter {
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btnAction {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #fff;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.btnAction:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btnDelete {
+  flex: 0;
+  min-width: 44px;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btnDelete:hover {
+  background: #ef4444;
+  color: #fff;
+}

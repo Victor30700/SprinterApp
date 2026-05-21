@@ -1,0 +1,128 @@
+/* ===== CONTENEDOR PREMIUM DEPORTIVO ===== */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ===== TÍTULO Y DESCRIPCIÓN ===== */
+.title {
+  color: #00ffe7;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #ddd;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 500px;
+  font-size: 1rem;
+}
+
+/* ===== FORMULARIO ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  width: 100%;
+  max-width: 500px;
+  backdrop-filter: blur(8px);
+}
+
+/* ===== INPUT DE ARCHIVO ===== */
+.fileInputContainer {
+  position: relative;
+}
+
+.fileInput {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.fileInputLabel {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  background: rgba(0, 0, 0, 0.3);
+  color: #00ffe7;
+  border: 1px dashed #00ffe7;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.fileInputLabel:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ===== PROGRESO ===== */
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+}
+.progressBar::-webkit-progress-bar {
+  background-color: #444;
+  border-radius: 5px;
+}
+.progressBar::-webkit-progress-value {
+  background-color: #00ffe7;
+  border-radius: 5px;
+  transition: width 0.2s ease;
+}
+.progressBar::-moz-progress-bar {
+  background-color: #00ffe7;
+  border-radius: 5px;
+}
+
+/* ===== MENSAJE DE ERROR ===== */
+.errorText {
+  color: #ff5252;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ===== BOTÓN SUBIR ===== */
+.uploadButton {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #4b00ff, #8e2de2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.uploadButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6200ff, #a23dee);
+  box-shadow: 0 0 10px rgba(75, 0, 255, 0.6);
+}
+
+.uploadButton:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
